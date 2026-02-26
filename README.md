@@ -1,6 +1,6 @@
 # Claude Code Video Toolkit
 
-Skills, MCP servers, and tools for producing video with Claude Code. Covers programmatic video (Remotion, Manim), voiceover/audio (ElevenLabs), screen recording, YouTube clipping, and FFmpeg post-processing.
+Skills, MCP servers, and tools for producing video with Claude Code. Covers programmatic video (Remotion, Manim), screen recording, YouTube clipping, and FFmpeg post-processing.
 
 `February 2026`
 
@@ -10,7 +10,6 @@ Skills, MCP servers, and tools for producing video with Claude Code. Covers prog
 
 - [Programmatic Video (Remotion)](#programmatic-video-remotion) — React components rendered to MP4
 - [Math & Science Animation (Manim)](#math--science-animation-manim) — 3Blue1Brown-style explainers
-- [Voiceover & Audio (ElevenLabs)](#voiceover--audio-elevenlabs) — TTS, sound effects, music
 - [Screen Recording & Demos](#screen-recording--demos) — Product walkthroughs via Playwright
 - [YouTube Clipping & Subtitles](#youtube-clipping--subtitles) — Download, chapter, clip, translate
 - [FFmpeg & Post-Processing](#ffmpeg--post-processing) — Encode, resize, compress, concat
@@ -91,34 +90,6 @@ Renders Manim scenes as an MCP server. Claude writes the scene code, sends it to
 | | |
 |---|---|
 | **Source** | [Medium writeup](https://medium.com/@omchoksi108/i-built-a-public-manim-mcp-server-now-claude-can-produce-real-3blue1brown-videos-on-demand-050995551c4e) |
-
----
-
-## Voiceover & Audio (ElevenLabs)
-
-*Professional TTS, sound effects, and music generation via the ElevenLabs API. Claude writes the script, ElevenLabs voices it.*
-
-### ElevenLabs Skills (Official)
-
-Three official skills from ElevenLabs, released February 2026:
-
-1. **Text-to-Speech** — 100+ voices, 70+ languages, voice cloning, emotion control via v3 audio tags (happy, excited, whispered), SSML break tags for pacing
-2. **Sound Effects** — Generate SFX from text descriptions ("footsteps on wooden floor"), looping support, duration control
-3. **Music Generation** — Instrumental tracks, songs with lyrics, jingles. Supports composition plans for granular control.
-
-| | |
-|---|---|
-| **Source** | [elevenlabs.io/blog/elevenlabs-agent-skills](https://elevenlabs.io/blog/elevenlabs-agent-skills) |
-
-Install into `.claude/skills/` per the ElevenLabs docs. Requires `ELEVENLABS_API_KEY` env var.
-
-### ElevenLabs MCP Server
-
-Gives Claude access to the full ElevenLabs API as an MCP server. TTS, SFX, and music through tool calls. Launched April 2025, works with Claude Code and Cursor.
-
-| | |
-|---|---|
-| **Source** | [elevenlabs.io/blog/introducing-elevenlabs-mcp](https://elevenlabs.io/blog/introducing-elevenlabs-mcp) |
 
 ---
 
@@ -203,10 +174,6 @@ done
 # Remotion for video generation
 npx skills add remotion
 
-# ElevenLabs for voiceover
-# (install ElevenLabs skills to .claude/skills/)
-export ELEVENLABS_API_KEY=your_key
-
 # Playwright for screen recording
 claude mcp add playwright -s user -- npx @playwright/mcp@latest --save-video=1920x1080
 ```
@@ -223,9 +190,6 @@ Or use the digitalsamba video toolkit for the full pipeline with brand profiles 
 # System deps (macOS)
 brew install cairo pkg-config ffmpeg
 uv tool install manim
-
-# ElevenLabs for narration
-export ELEVENLABS_API_KEY=your_key
 ```
 
 ### YouTube content repurposing
@@ -250,8 +214,6 @@ brew install ffmpeg  # needs libass support
 | Manim Skill (Yusuke710) | Plugin | 3Blue1Brown-style math animation | Plugin install |
 | Math-To-Manim | Plugin | Multi-pipeline Manim (Claude/Gemini/Kimi) | Clone repo |
 | Manim MCP Server | MCP | Renders Manim scenes server-side | Config needed |
-| ElevenLabs Skills (Official) | Skills | TTS, SFX, music generation | Manual copy |
-| ElevenLabs MCP | MCP | Full ElevenLabs API via MCP | Config needed |
 | Youtube Clipper | Skill | Download, chapter, clip, subtitle | One command |
 | Playwright `--save-video` | MCP flag | Screen recording | One command |
 | FFmpeg Skill | Skill | Video encoding and processing | Part of Video Toolkit |
@@ -265,8 +227,6 @@ brew install ffmpeg  # needs libass support
 | [Remotion + Claude Code docs](https://www.remotion.dev/docs/ai/claude-code) | Official setup guide |
 | [Remotion examples gallery](https://www.remotion.dev/showcase) | What people have built |
 | [digitalsamba/claude-code-video-toolkit](https://github.com/digitalsamba/claude-code-video-toolkit) | Full toolkit with docs |
-| [ElevenLabs agent skills](https://elevenlabs.io/blog/elevenlabs-agent-skills) | Official TTS/SFX/music skills |
-| [ElevenLabs MCP](https://elevenlabs.io/blog/introducing-elevenlabs-mcp) | MCP server setup |
 | [Manim Community docs](https://docs.manim.community/) | ManimCE reference |
 | [op7418/Youtube-clipper-skill](https://github.com/op7418/Youtube-clipper-skill) | YouTube clipper docs |
 | [awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | Master list of all Claude Code tools |
